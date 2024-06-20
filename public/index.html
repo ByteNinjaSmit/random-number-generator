@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #random-number {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="random-number">Loading...</div>
+    <input type="text" id="user-input" placeholder="Enter the number" />
+    <button onclick="verifyNumber()">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        let currentNumber;
+
+        function fetchRandomNumber() {
+            fetch('http://localhost:3000/number')
+                .then(response => response.json())
+                .then(data => {
+                    currentNumber = data.number;
+                    document.getElementById('random-number').innerText = currentNumber;
+                })
+                .catch(error => console.error('Error fetching number:', error));
+        }
+
+        function verifyNumber() {
+            const userInput = document.getElementById('user-input').value;
+            const resultDiv = document.getElementById('result');
+
+            if (userInput == currentNumber) {
+                resultDiv.innerText = "Verified";
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.innerText = "Failed, Enter Again";
+                resultDiv.style.color = "red";
+            }
+        }
+
+        // Initial call to fetch the number immediately
+        fetchRandomNumber();
+
+        // Set interval to fetch the number every 30 seconds
+        setInterval(fetchRandomNumber, 10);
+    </script>
+</body>
+</html>
