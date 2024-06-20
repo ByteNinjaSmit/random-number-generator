@@ -39,7 +39,7 @@ This is useful for scenarios requiring double verification, such as offline shop
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/random-number-generator.git
+   git clone https://github.com/ByteNinjaSmit/random-number-generator.git
    cd random-number-generator
    ```
 
@@ -78,8 +78,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ```
 
 ### Notes:
-
-- Replace `your-username` in the Git clone command with your actual GitHub username or the URL of your repository.
 - Ensure your server (`server.js`) and client-side HTML (`index.html`) are correctly configured as per your project structure.
 
 This README.md file is structured to provide an overview of your project, setup instructions, and its purpose as a prototype for synchronized random number generation. Adjust and expand it based on your specific project details and additional features.
